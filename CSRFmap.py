@@ -1,5 +1,6 @@
 import argparse
 from payloads.csrf_payloads import CSRF
+from argparse import RawTextHelpFormatter
 
 def banner():
     return """
@@ -13,7 +14,7 @@ def banner():
 
     """
 
-parser = argparse.ArgumentParser(prog=banner(),usage="python3 CSRFmap.py -a \"http://exemplo.com\" -m post -pl form_interaction -n username password token")
+parser = argparse.ArgumentParser(prog=banner(),usage="python3 CSRFmap.py -a \"http://exemplo.com\" -m post -p form1 -n username password token",formatter_class=RawTextHelpFormatter)
 
 parser.add_argument("-a","-A",dest="action",action="store",type=str,required=True,help="Insert action")
 parser.add_argument("-m","-M",dest="method",action="store",type=str,required=True,help="Insert method")

