@@ -61,7 +61,7 @@ git clone https://github.com/joaoviictorti/CSRFmap
 # Executando CSRFmap
 
 ```console
-python3 CSRFmap.py -a "http://exemplo.com" -m post -p form_interaction -n username password token -v victor password 132423542
+python3 CSRFmap.py -a "http://exemplo.com" -m post -p form1 -n username password token -v victor password 132423542
 
   ____________  ____              
  / ___/ __/ _ \/ __/_ _  ___ ____ 
