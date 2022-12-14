@@ -57,7 +57,7 @@ CSRFmap requer **python3** e para baixá-lo só usar:
 git clone https://github.com/joaoviictorti/Revshell
 ```
 
-# Executando Revshell
+# Executando CSRFmap
 
 ```console
 python3 CSRFmap.py -a "http://exemplo.com" -m post -pl form_interaction -n username password token
