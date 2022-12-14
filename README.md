@@ -19,7 +19,7 @@
 
 O CSRFmap é uma ferramenta que gera payloads de Cross-site request forgery. Possui uma funcionalidade que gera diversas possibilidades de exploração.
 
-Projetei o `Revshell`  e mantive um modelo consistentemente passivo para torná-lo útil para testadores de penetração.
+Projetei o `CSRFmap`  e mantive um modelo consistentemente passivo para torná-lo útil para testadores de penetração.
 
 # Características
 
