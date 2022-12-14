@@ -51,7 +51,7 @@ options:
 
 # Instalação
 
-Revshell requer **python3** e para baixá-lo só usar:
+CSRFmap requer **python3** e para baixá-lo só usar:
 
 ```sh
 git clone https://github.com/joaoviictorti/Revshell
