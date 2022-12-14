@@ -39,7 +39,6 @@ Isso exibirá a ajuda para a ferramenta. Aqui estão todos os switches que ele s
                            /_/ 
                            Autor: joaovictorti
                            version: 1.0 
-```
 
 options:
   -h, --help            show this help message and exit
