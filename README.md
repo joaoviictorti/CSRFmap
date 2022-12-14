@@ -38,7 +38,7 @@ Isso exibirá a ajuda para a ferramenta. Aqui estão todos os switches que ele s
 \___/___/_/|_/_/ /_/_/_/\_,_/ .__/
                            /_/ 
                            Autor: joaovictorti
-                           version: 1.0 
+                           version: 1.1 
 
 options:
   -h, --help            show this help message and exit
